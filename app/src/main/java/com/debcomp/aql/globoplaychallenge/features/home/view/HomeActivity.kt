@@ -1,4 +1,4 @@
-package com.debcomp.aql.globoplaychallenge.ui.home
+package com.debcomp.aql.globoplaychallenge.features.home.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

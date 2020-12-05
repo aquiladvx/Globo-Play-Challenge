@@ -1,10 +1,10 @@
-package com.debcomp.aql.globoplaychallenge.ui.splash
+package com.debcomp.aql.globoplaychallenge.features.splash
 
 import android.content.Intent
 import android.os.Bundle
 import com.debcomp.aql.globoplaychallenge.R
 import com.debcomp.aql.globoplaychallenge.infra.BaseActivity
-import com.debcomp.aql.globoplaychallenge.ui.home.HomeActivity
+import com.debcomp.aql.globoplaychallenge.features.home.view.HomeActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

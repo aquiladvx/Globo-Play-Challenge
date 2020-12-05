@@ -6,7 +6,7 @@
     android:background="@color/background_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeActivity">
+    tools:context=".features.home.view.HomeActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_home"
@@ -35,6 +35,25 @@
 
 
     </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_shows"
+        android:layout_below="@+id/tb_home"
+        android:layout_above="@+id/bnv_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_home"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_vavigation_menu_home"
+        />
 
 
 
