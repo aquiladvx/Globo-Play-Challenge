@@ -1,4 +1,6 @@
-package com.debcomp.aql.globoplaychallenge.features.home.model
+package com.debcomp.aql.globoplaychallenge.features.home.model.entity
+
+import com.debcomp.aql.globoplaychallenge.features.home.model.entity.Show
 
 
 /*
