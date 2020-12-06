@@ -12,6 +12,6 @@ import com.debcomp.aql.globoplaychallenge.features.home.model.entity.Show
  */
  
 data class ShowGroup(
-        val title: String,
-        val shows: ArrayList<Show>
+        val genre: String,
+        val shows: List<Show>
 )

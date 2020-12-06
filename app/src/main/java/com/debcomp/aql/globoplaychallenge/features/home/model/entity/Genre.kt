@@ -1,5 +1,7 @@
 package com.debcomp.aql.globoplaychallenge.features.home.model.entity
 
+import com.google.gson.annotations.SerializedName
+
 
 /*
  * Davi Áquila
@@ -9,5 +11,12 @@ package com.debcomp.aql.globoplaychallenge.features.home.model.entity
  *
  */
 
-class Genre {
-}
+data class Genre(
+    val id: Int,
+    val name: String
+)
+
+data class GenreList(
+    @SerializedName("genres")
+    var genres: List<Genre>
+)

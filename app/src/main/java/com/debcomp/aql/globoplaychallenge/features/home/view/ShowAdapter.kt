@@ -11,6 +11,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.debcomp.aql.globoplaychallenge.R
 import com.debcomp.aql.globoplaychallenge.features.details.DetailsAcivity
 import com.debcomp.aql.globoplaychallenge.features.home.model.entity.Show
+import com.debcomp.aql.globoplaychallenge.infra.Constants
+import com.debcomp.aql.globoplaychallenge.infra.util.MyFileUtils
 
 
 /*
@@ -45,10 +47,8 @@ class ShowAdapter internal constructor(context: Context, listShow: List<Show>)
 
         fun bind(show: Show) {
             Glide.with(mContext)
-                .load(show.img)
+                .load(Constants.WEB_SERVICE_IMAGE_200 + show.posterPath)
                 .placeholder(R.drawable.home)
-                .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(mImgShow)
 
             mImgShow.setOnClickListener {

@@ -2,7 +2,14 @@ package com.debcomp.aql.globoplaychallenge.features.home.model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.debcomp.aql.globoplaychallenge.features.home.repository.HomeRepository
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.debcomp.aql.globoplaychallenge.features.home.data.repository.HomeRepository
+import com.debcomp.aql.globoplaychallenge.features.home.model.entity.Genre
+import com.debcomp.aql.globoplaychallenge.features.home.model.entity.ShowList
+import com.debcomp.aql.globoplaychallenge.infra.util.MyFileUtils
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.coroutineScope
 
 
 /*
@@ -15,6 +22,30 @@ import com.debcomp.aql.globoplaychallenge.features.home.repository.HomeRepositor
 
 class HomeViewModel(app: Application): AndroidViewModel(app) {
 
-
+    private var apiKey: String = MyFileUtils.readFile(app)
     private val homeRepo = HomeRepository(app)
+
+    private val eventsChannel = Channel<Map<String, ShowList?>>(capacity = 20)
+
+    val allGenre = homeRepo.allGenreResponse
+    val showByGenre = homeRepo.showsByGenreResponse
+
+    suspend fun getAllGenre() {
+        homeRepo.getAllGenre(apiKey)
+    }
+
+    suspend fun getShowsByGenre(genre: Genre) {
+        homeRepo.getShowsByGenre(apiKey, genre)
+    }
+
+    class HomeViewModelFactory constructor(private val application: Application) : ViewModelProvider.Factory {
+
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            return if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+                HomeViewModel(this.application) as T
+            } else {
+                throw IllegalArgumentException("ViewModel not found")
+            }
+        }
+    }
 }

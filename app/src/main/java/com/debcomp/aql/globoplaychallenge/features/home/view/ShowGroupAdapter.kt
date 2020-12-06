@@ -54,7 +54,7 @@ class ShowGroupAdapter internal constructor(context: Context)
         }
 
         fun bind(showGroup: ShowGroup) {
-            mTitleView?.text = showGroup.title
+            mTitleView?.text = showGroup.genre
 
             val viewManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
             val mAdapter = ShowAdapter(mContext, showGroup.shows)

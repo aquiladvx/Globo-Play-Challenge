@@ -12,7 +12,7 @@ class DetailsAcivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_acivity)
 
-        val id = intent.getLongExtra(EXTRA_SHOW_ID, 0)
+        val id = intent.getIntExtra(EXTRA_SHOW_ID, 0)
         Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show()
     }
 
@@ -21,7 +21,7 @@ class DetailsAcivity : AppCompatActivity() {
 
         private const val EXTRA_SHOW_ID = "EXTRA_SHOW_ID_DETAIL"
 
-        fun start(context: Context, showId: Long): Intent {
+        fun start(context: Context, showId: Int): Intent {
             return Intent(context, DetailsAcivity::class.java)
                 .apply { putExtra(EXTRA_SHOW_ID, showId) }
         }
