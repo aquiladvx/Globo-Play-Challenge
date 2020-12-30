@@ -12,10 +12,15 @@ import com.debcomp.aql.globoplaychallenge.features.home.model.entity.Show
 import com.debcomp.aql.globoplaychallenge.features.home.model.entity.ShowGroup
 import com.debcomp.aql.globoplaychallenge.infra.BaseActivity
 import com.debcomp.aql.globoplaychallenge.infra.GPCApplication
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.sql.SQLClientInfoException
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class HomeActivity : BaseActivity() {
 
@@ -47,12 +52,17 @@ class HomeActivity : BaseActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.getAllGenre()
         }
+
+
     }
 
     private fun setObservables() {
         viewModel.allGenre.observe(this, Observer {
+
             listGenre = it.genres
             getShowsGroup()
+
+
         })
 
         viewModel.showByGenre.observe(this, Observer {
@@ -68,6 +78,7 @@ class HomeActivity : BaseActivity() {
                 viewModel.getShowsByGenre(genre)
             }
         }
+
     }
 
     private fun setShows(genreName: String, showList: List<Show>?) {
@@ -78,11 +89,5 @@ class HomeActivity : BaseActivity() {
         }
     }
 
-//    private suspend fun getItemsForPart(p: InnerItemPart): List<InnerPart>{
-//        return withContext(Dispatchers.IO) {
-//            // your old code inside the launch, just put filteredParts in last line
-//            filteredParts
-//        }
-//    }
 
 }

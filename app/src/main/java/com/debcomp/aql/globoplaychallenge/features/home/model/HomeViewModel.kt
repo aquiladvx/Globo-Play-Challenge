@@ -25,8 +25,6 @@ class HomeViewModel(app: Application): AndroidViewModel(app) {
     private var apiKey: String = MyFileUtils.readFile(app)
     private val homeRepo = HomeRepository(app)
 
-    private val eventsChannel = Channel<Map<String, ShowList?>>(capacity = 20)
-
     val allGenre = homeRepo.allGenreResponse
     val showByGenre = homeRepo.showsByGenreResponse
 

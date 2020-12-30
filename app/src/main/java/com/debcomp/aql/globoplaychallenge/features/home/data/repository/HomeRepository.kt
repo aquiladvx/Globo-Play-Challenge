@@ -21,6 +21,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.*
 
 
 /*
@@ -85,7 +86,7 @@ class HomeRepository(private val app: Application) {
 
                 override fun onResponse(call: Call<ShowList>, response: Response<ShowList>) {
                     Log.i(OK_API, "${genre.name} with ${response.body()!!.shows.size} shows")
-                    showsByGenreResponse.postValue(mapOf(Pair(genre.name, response.body())))
+                    showsByGenreResponse.setValue(mapOf(Pair(genre.name, response.body())))
                 }
 
             })
@@ -117,4 +118,30 @@ class HomeRepository(private val app: Application) {
         }
         return false
     }
+
+//    class ActiveMutableLiveData<T> : MutableLiveData<T>() {
+//
+//        private val values: Queue<T> = LinkedList()
+//
+//        private var isActive: Boolean = false
+//
+//        override fun onActive() {
+//            isActive = true
+//            while (values.isNotEmpty()) {
+//                setValue(values.poll())
+//            }
+//        }
+//
+//        override fun onInactive() {
+//            isActive = false
+//        }
+//
+//        override fun setValue(value: T) {
+//            if (isActive) {
+//                super.setValue(value)
+//            } else {
+//                values.add(value)
+//            }
+//        }
+//    }
 }
